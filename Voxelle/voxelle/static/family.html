@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="hi-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Voxelle: Parivaar</title>
+  <meta name="theme-color" content="#2f6b3f">
+  <link rel="manifest" href="/manifest.webmanifest?role=family">
+  <link rel="icon" href="/static/icon-192.png">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/"><img src="/static/icon-192.png" alt="">Voxelle</a>
+      <span class="role-chip">Parivaar</span>
+    </div>
+
+    <!-- alerts first: this is what the family must not miss -->
+    <section id="alerts-card" class="card danger" hidden>
+      <div class="section-title">
+        <h2>Dhyan dein</h2>
+        <button id="alerts-seen" class="btn sm ghost">Dekh liya</button>
+      </div>
+      <div id="alerts"></div>
+    </section>
+
+    <section class="card">
+      <span class="step-tag">Step 1</span>
+      <h2>Schedule bolkar banayein</h2>
+      <div class="stack">
+        <div>
+          <label for="parent-label">Aap unhe kya kehte hain?</label>
+          <div class="row">
+            <input id="parent-label" type="text" maxlength="30" placeholder="Papa" autocomplete="off">
+            <button id="save-label" class="btn sm ghost">Save</button>
+          </div>
+        </div>
+
+        <p class="muted small" style="margin:0">Bolkar bataiye, jaise: <em>"Papa ko subah BP ki goli khaane ke baad, raat ko sugar ki goli."</em></p>
+
+        <div class="mic-row">
+          <button id="btn-mic" class="mic" aria-label="Bolkar schedule batayein"></button>
+          <div>
+            <div class="mic-label" id="mic-label">Bolna shuru karein</div>
+            <div class="muted small">Dabaiye, boliye, phir dobara dabaiye.</div>
+          </div>
+        </div>
+        <p id="mic-status" class="status" aria-live="polite"></p>
+
+        <div>
+          <label for="schedule-text">Ya yahan likhein</label>
+          <textarea id="schedule-text" placeholder="subah BP ki goli khaane ke baad, raat ko sugar ki goli"></textarea>
+        </div>
+        <button id="btn-parse" class="btn block">Schedule samjho</button>
+      </div>
+    </section>
+
+    <section id="draft-card" class="card" hidden>
+      <span class="step-tag">Step 2</span>
+      <h2>Maine yeh samjha</h2>
+      <p class="muted small">Galat ho to badal lijiye. Aapke "sahi hai" dabane ke baad hi reminders shuru honge.</p>
+      <p id="heard-line" class="heard" hidden></p>
+      <div id="draft-rows"></div>
+      <button id="add-row" class="btn sm ghost">+ Dawai jodein</button>
+      <div class="readback" id="readback"></div>
+      <div class="row">
+        <button id="btn-listen" class="btn ghost">Sunein</button>
+        <button id="btn-redo" class="btn ghost">Phir se bolein</button>
+      </div>
+      <button id="btn-confirm" class="btn big" style="margin-top:12px">Sahi hai, shuru karein</button>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><h2>Abhi ka schedule</h2><span class="muted small" id="sched-count"></span></div>
+      <ul id="schedule" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><h2>Dose ka hisaab</h2><span class="muted small">taaza pehle</span></div>
+      <ul id="log" class="list"></ul>
+    </section>
+
+    <details class="card">
+      <summary>Notification aur demo</summary>
+      <div class="stack">
+        <p class="muted small" style="margin:0">Dawai chhootne par is phone par notification aayega. Pehle ek baar chalu karein.</p>
+        <button id="btn-push" class="btn block">Notification chalu karein</button>
+        <button id="btn-push-test" class="btn ghost block">Test notification bhejein</button>
+        <hr style="border:none;border-top:1px solid var(--line);width:100%">
+        <p class="muted small" style="margin:0"><strong>Demo:</strong> abhi ek reminder shuru karein. Agar jawab na diya jaye to itne second baad parivaar ko alert jayega.</p>
+        <div class="row">
+          <input id="demo-sec" type="number" min="30" max="900" value="90" aria-label="Missed alert kitne second baad">
+          <button id="btn-demo" class="btn">Demo reminder bhejein</button>
+        </div>
+      </div>
+    </details>
+
+    <p class="safety">Yeh app sirf yaad dilata hai aur likhta hai. Dawai, dose ya sehat ke baare mein salah nahi deta. Kisi bhi takleef par turant doctor se sampark karein.</p>
+  </main>
+  <script type="module" src="/static/js/family.js"></script>
+</body>
+</html>

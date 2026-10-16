@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-multipart
+requests
+pywebpush
+python-dotenv
+pillow
+pytest
+httpx
+tzdata

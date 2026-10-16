@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="hi-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Voxelle</title>
+  <meta name="theme-color" content="#2f6b3f">
+  <link rel="manifest" href="/manifest.webmanifest?role=parent">
+  <link rel="icon" href="/static/icon-192.png">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body class="parent-mode">
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/"><img src="/static/icon-192.png" alt="">Voxelle</a>
+      <span class="role-chip">Reminders</span>
+    </div>
+
+    <section id="start-card" class="card hero">
+      <h1 id="greet">Namaste</h1>
+      <p class="muted">Dawai ke time par yeh aapko awaaz mein yaad dilayega aur aapka jawab sunega. Shuru karne ke liye neeche dabaiye.</p>
+      <button id="start" class="btn light big">Shuru karein</button>
+    </section>
+
+    <section id="reminder" class="card alert" hidden aria-live="assertive">
+      <span class="step-tag">Dawai ka time</span>
+      <h2 id="rem-title">BP ki goli</h2>
+      <p id="rem-detail" class="muted"></p>
+      <button id="rem-play" class="btn ghost block">Dobara sunein</button>
+
+      <div class="actions">
+        <button id="btn-yes" class="btn big">Haan, le li</button>
+        <button id="btn-later" class="btn big amber">10 minute baad</button>
+      </div>
+
+      <div class="mic-row">
+        <button id="btn-mic" class="mic" aria-label="Bolkar batayein"></button>
+        <div>
+          <div class="mic-label" id="mic-label">Bolkar batayein</div>
+          <div class="muted small">Dabaiye aur boliye: "haan, kha li" ya "baad mein"</div>
+        </div>
+      </div>
+      <p id="listen-status" class="status" aria-live="polite"></p>
+      <p id="heard" class="heard" hidden></p>
+
+      <details class="small">
+        <summary class="muted">Awaaz nahi chal rahi? Likhkar batayein</summary>
+        <div class="row" style="margin-top:8px">
+          <input id="type-input" type="text" placeholder="jaise: haan le li" autocomplete="off">
+          <button id="type-send" class="btn sm">Bhejein</button>
+        </div>
+      </details>
+    </section>
+
+    <section id="idle" class="card calm" hidden>
+      <h2>Abhi koi dawai baaki nahi</h2>
+      <p id="next-dose" class="muted"></p>
+    </section>
+
+    <p id="say-line" class="say" aria-live="polite"></p>
+
+    <p class="safety">Yeh sirf yaad dilata hai aur likhta hai. Dawai, dose ya sehat ke baare mein salah nahi deta. Koi takleef ho to parivaar ya doctor se baat karein.</p>
+  </main>
+  <script type="module" src="/static/js/parent.js"></script>
+</body>
+</html>
