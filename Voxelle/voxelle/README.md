@@ -56,6 +56,15 @@ Open the `https://...` address it prints on both phones.
 - **Android (Chrome):** works straight away. Tap "Shuru karein" on the parent page and allow notifications and the mic.
 - **iPhone:** notifications only work after Share, then "Add to Home Screen", then opening the app from the home screen.
 
+### Free permanent link (Render)
+
+1. Push the project to GitHub (the `.env` and `.venv` stay out thanks to `.gitignore`).
+2. On render.com choose **New, Blueprint** (or **New, Web Service**), pick the repo, and use the free plan. `render.yaml` sets the build and start commands.
+3. Fill in the environment variables it asks for: `GNANI_API_KEY`, `VAPID_PUBLIC_KEY` (from your `.env`), `VAPID_PRIVATE_KEY_PEM` (paste the whole contents of `data/vapid_private.pem`, including the BEGIN and END lines) and `VAPID_SUBJECT` (your email as `mailto:you@gmail.com`).
+4. Open the `https://....onrender.com` link on your phones.
+5. Free instances sleep after about 15 minutes without visits, which stops reminders. Add a free monitor (for example UptimeRobot, HTTP check every 5 minutes on `/api/health`) to keep it awake.
+6. The free disk is wiped on restart, so re-enter the schedule before a demo.
+
 ### Day 1: test the voices first
 
 ```bash
