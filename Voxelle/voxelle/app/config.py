@@ -42,6 +42,12 @@ _vapid_file = os.getenv("VAPID_PRIVATE_KEY_FILE", "data/vapid_private.pem")
 VAPID_PRIVATE_KEY_FILE = Path(_vapid_file) if Path(_vapid_file).is_absolute() else BASE_DIR / _vapid_file
 VAPID_SUBJECT = os.getenv("VAPID_SUBJECT", "mailto:you@example.com")
 
+# On hosts without a persistent disk, the private key can be passed as an environment variable.
+_pem = os.getenv("VAPID_PRIVATE_KEY_PEM", "").replace("\\n", "\n").strip()
+if _pem and not VAPID_PRIVATE_KEY_FILE.exists():
+    VAPID_PRIVATE_KEY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    VAPID_PRIVATE_KEY_FILE.write_text(_pem + "\n")
+
 # Reminder timing
 REMIND_EVERY_MIN = _int("REMIND_EVERY_MIN", 10)
 MAX_REMINDERS = _int("MAX_REMINDERS", 3)
