@@ -1,0 +1,9 @@
+services:
+  voxelle:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    volumes:
+      - ./data:/app/data   # database, voice cache and push key survive restarts
+    restart: unless-stopped
